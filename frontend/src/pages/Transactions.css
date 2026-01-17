@@ -1,0 +1,415 @@
+.transactions-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ==========================================
+   PAGE HEADER
+   ========================================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  animation: slideInLeft 0.6s ease;
+}
+
+.page-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.25rem;
+}
+
+.page-header .text-muted {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.page-header .btn {
+  animation: slideInRight 0.6s ease;
+}
+
+/* ==========================================
+   FILTERS
+   ========================================== */
+.filters-card {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: 0.1s;
+}
+
+.filters {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 180px;
+  flex: 1;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.filter-group select {
+  padding: 0.875rem 1.25rem;
+  background: var(--bg-input);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 3rem;
+}
+
+.filter-group select:hover {
+  border-color: var(--primary-light);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.filter-group select option {
+  background: #1a1a3e;
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   SUMMARY STATS
+   ========================================== */
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.15s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.25s; }
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.stat-card.income::before {
+  background: var(--gradient-success);
+}
+
+.stat-card.expense::before {
+  background: var(--gradient-danger);
+}
+
+.stat-card.balance::before {
+  background: var(--gradient-primary);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.stat-card.income:hover {
+  border-color: var(--success);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--success-glow);
+}
+
+.stat-card.expense:hover {
+  border-color: var(--danger);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--danger-glow);
+}
+
+.stat-card.balance:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--primary-glow);
+}
+
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
+}
+
+.stat-card .stat-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stat-card.income .stat-value {
+  background: var(--gradient-success);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card.expense .stat-value {
+  background: var(--gradient-danger);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card.balance .stat-value.positive {
+  background: var(--gradient-success);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card.balance .stat-value.negative {
+  background: var(--gradient-danger);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .summary-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   TRANSACTIONS TABLE
+   ========================================== */
+.transactions-card {
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: 0.3s;
+}
+
+.transaction-row {
+  transition: all 0.3s ease;
+}
+
+.transaction-row:hover {
+  background: rgba(124, 58, 237, 0.1) !important;
+}
+
+.transaction-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.transaction-type.income {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.transaction-type.expense {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.transaction-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.transaction-amount {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.transaction-amount.income {
+  color: var(--success);
+}
+
+.transaction-amount.expense {
+  color: var(--danger);
+}
+
+/* ==========================================
+   ACTION BUTTONS
+   ========================================== */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.action-buttons .btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+
+.action-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.action-buttons .btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.action-buttons .btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  box-shadow: none;
+}
+
+.action-buttons .btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* ==========================================
+   PAGINATION (if added later)
+   ========================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn {
+  padding: 0.75rem 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover,
+.pagination-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-header .btn {
+    width: 100%;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .summary-item .summary-amount {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  th, td {
+    padding: 0.875rem 0.75rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .transactions-summary {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide less important columns on mobile */
+  table th:nth-child(4),
+  table td:nth-child(4) {
+    display: none;
+  }
+}
+
+.font-medium {
+  font-weight: 500;
+}

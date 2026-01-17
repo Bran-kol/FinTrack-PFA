@@ -1,0 +1,490 @@
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ==========================================
+   DASHBOARD HEADER
+   ========================================== */
+.dashboard-header {
+  margin-bottom: 2.5rem;
+  animation: slideInLeft 0.6s ease;
+}
+
+.dashboard-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-header .text-muted {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   SUMMARY CARDS - GLASSMORPHISM
+   ========================================== */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.summary-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.summary-card:nth-child(1) { animation-delay: 0.1s; }
+.summary-card:nth-child(2) { animation-delay: 0.2s; }
+.summary-card:nth-child(3) { animation-delay: 0.3s; }
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 24px 24px 0 0;
+}
+
+.summary-card.balance::before {
+  background: var(--gradient-primary);
+}
+
+.summary-card.income::before {
+  background: var(--gradient-success);
+}
+
+.summary-card.expense::before {
+  background: var(--gradient-danger);
+}
+
+.summary-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.summary-card.balance::after {
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+
+.summary-card.income::after {
+  background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+}
+
+.summary-card.expense::after {
+  background: radial-gradient(circle, var(--danger) 0%, transparent 70%);
+}
+
+.summary-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.summary-card.balance:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--primary-glow);
+}
+
+.summary-card.income:hover {
+  border-color: var(--success);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--success-glow);
+}
+
+.summary-card.expense:hover {
+  border-color: var(--danger);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--danger-glow);
+}
+
+.summary-card.clickable {
+  cursor: pointer;
+}
+
+.summary-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.summary-card.balance .summary-icon {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+.summary-card.income .summary-icon {
+  background: var(--success-light);
+  box-shadow: 0 8px 25px var(--success-glow);
+}
+
+.summary-card.expense .summary-icon {
+  background: var(--danger-light);
+  box-shadow: 0 8px 25px var(--danger-glow);
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.summary-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.summary-value.positive {
+  background: var(--gradient-success);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.summary-value.negative {
+  background: var(--gradient-danger);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.summary-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.clickable-hint {
+  color: var(--primary-light);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.clickable-hint::before {
+  content: '✏️';
+  font-size: 0.7rem;
+}
+
+/* ==========================================
+   CHARTS GRID
+   ========================================== */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  min-height: 420px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px var(--primary-glow);
+  border-color: var(--primary-light);
+}
+
+.chart-card .card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chart-card .card-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+.chart-container {
+  height: 300px;
+  position: relative;
+}
+
+.chart-container canvas {
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.2));
+}
+
+/* ==========================================
+   CATEGORY BUDGETS
+   ========================================== */
+.category-budgets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.category-budget-item {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.category-budget-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--glass-border);
+  transform: translateX(5px);
+}
+
+.category-budget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.category-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.category-status {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.category-status.exceeded {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ==========================================
+   PROGRESS BARS
+   ========================================== */
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.progress-bar.small {
+  height: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-success);
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 0 20px var(--success-glow);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
+  border-radius: 0 10px 10px 0;
+}
+
+.progress-fill.warning {
+  background: var(--gradient-gold);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.progress-fill.exceeded {
+  background: var(--gradient-danger);
+  box-shadow: 0 0 20px var(--danger-glow);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ==========================================
+   RECENT TRANSACTIONS TABLE
+   ========================================== */
+.recent-transactions-card {
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: 0.5s;
+}
+
+/* ==========================================
+   INITIAL BALANCE FORM
+   ========================================== */
+.initial-balance-form {
+  animation: fadeInUp 0.4s ease;
+}
+
+.initial-balance-form .text-muted {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 1200px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summary-card:nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .summary-value {
+    font-size: 1.75rem;
+  }
+
+  .summary-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .chart-card {
+    min-height: 350px;
+    padding: 1.5rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .summary-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .summary-value {
+    font-size: 1.5rem;
+  }
+}

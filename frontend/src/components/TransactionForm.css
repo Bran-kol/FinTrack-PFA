@@ -1,0 +1,203 @@
+.transaction-form {
+  animation: fadeInUp 0.4s ease;
+}
+
+.transaction-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.transaction-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.transaction-form .form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.transaction-form .form-group label .label-icon {
+  font-size: 1rem;
+}
+
+.transaction-form .form-group input,
+.transaction-form .form-group select,
+.transaction-form .form-group textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--bg-input);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transaction-form .form-group input:hover,
+.transaction-form .form-group select:hover,
+.transaction-form .form-group textarea:hover {
+  border-color: var(--primary-light);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.transaction-form .form-group input:focus,
+.transaction-form .form-group select:focus,
+.transaction-form .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow), 0 0 30px var(--primary-glow);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.transaction-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Type Toggle */
+.type-toggle {
+  display: flex;
+  gap: 1rem;
+}
+
+.toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-input);
+  border: 2px solid var(--glass-border);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.toggle-btn:hover {
+  border-color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn.income.active {
+  border-color: var(--success);
+  background: var(--success-light);
+  color: var(--success);
+  box-shadow: 0 0 30px var(--success-glow);
+}
+
+.toggle-btn.expense.active {
+  border-color: var(--danger);
+  background: var(--danger-light);
+  color: var(--danger);
+  box-shadow: 0 0 30px var(--danger-glow);
+}
+
+/* Select Dropdown Arrow */
+.transaction-form .form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.transaction-form .form-group select option {
+  background: #1a1a3e;
+  color: var(--text-primary);
+  padding: 0.5rem;
+}
+
+/* Number Input Arrows */
+.transaction-form .form-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.transaction-form .form-group input[type="number"]::-webkit-outer-spin-button,
+.transaction-form .form-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  opacity: 1;
+  background: transparent;
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+/* Custom Number Input Wrapper */
+.number-input-wrapper {
+  position: relative;
+}
+
+.number-input-wrapper input {
+  padding-right: 3.5rem;
+}
+
+.number-input-wrapper::after {
+  content: '▲▼';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+  letter-spacing: -2px;
+}
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.form-actions .btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .transaction-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .type-toggle {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .type-option {
+    padding: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+}
